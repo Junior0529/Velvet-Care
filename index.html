@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet & Care | Cuidado Personal</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR (BANNER NEGRO) -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Velvet & <span>Care</span></a>
+      <ul class="nav-links">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="javascript:void(0)" onclick="toggleCarrito()">Carrito (<span id="contador-nav">0</span>)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ENCABEZADO / HERO BANNER CON IMAGEN DE FONDO -->
+  <header class="hero">
+    <div class="hero-contenido">
+      <h1>Productos Seleccionados para tu Cuidado & Bienestar</h1>
+      <p>Cosmética, higiene corporal, cuidado capilar y suplementos traídos directamente desde España.</p>
+      <a href="#catalogo" class="btn-hero">Ver Catálogo</a>
+    </div>
+  </header>
+
+  <!-- Sección de Catálogo -->
+  <main id="catalogo" class="contenedor-catalogo">
+    <h2>Nuestro Catálogo</h2>
+    
+    <!-- Filtros por Categoría -->
+    <div class="filtros-categoria">
+      <button class="btn-filtro active" onclick="filtrarProductos('todos')">Todos</button>
+      <button class="btn-filtro" onclick="filtrarProductos('capilar')">Cuidado Capilar</button>
+      <button class="btn-filtro" onclick="filtrarProductos('bienestar')">Bienestar & Suplementos</button>
+      <button class="btn-filtro" onclick="filtrarProductos('corporal')">Higiene & Corporal</button>
+      <button class="btn-filtro" onclick="filtrarProductos('depilacion')">Depilación & Facial</button>
+    </div>
+
+    <div id="grid-productos" class="grid-productos">
+      <!-- Los productos se cargan dinámicamente -->
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <p>&copy; 2026 Velvet & Care. Todos los derechos reservados.</p>
+    <p>Santo Domingo, República Dominicana | Venta directa & Distribución Mayorista</p>
+  </footer>
+
+  <!-- MODAL / VISTA AMPLIADA DE PRODUCTO -->
+  <div id="modal-producto" class="modal-overlay" style="display: none;">
+    <div class="modal-contenido">
+      <button class="btn-cerrar" onclick="cerrarModal()">&times;</button>
+      <div class="modal-cuerpo">
+        <div class="modal-img-container">
+          <img id="modal-img" src="" alt="Producto">
+        </div>
+        <div class="modal-info">
+          <h2 id="modal-titulo"></h2>
+          <p id="modal-categoria" class="modal-cat-tag"></p>
+          <p id="modal-descripcion"></p>
+          <p id="modal-precio" class="modal-precio"></p>
+          
+          <div class="modal-botones">
+            <button id="modal-btn-agregar" class="btn-agregar-modal">
+              <i class="fas fa-cart-plus"></i> Agregar al Carrito
+            </button>
+            <a id="modal-btn-comprar" href="#" target="_blank" class="btn-comprar-modal">
+              <i class="fab fa-whatsapp"></i> Comprar Ahora
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DEL CARRITO -->
+  <button class="carrito-flotante" onclick="toggleCarrito()" title="Ver Carrito">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="contador-carrito" class="contador-carrito">0</span>
+  </button>
+
+  <!-- PANEL LATERAL DEL CARRITO -->
+  <div id="panel-carrito" class="panel-carrito">
+    <div class="carrito-header">
+      <h3>Tu Carrito de Compras</h3>
+      <button class="btn-cerrar-carrito" onclick="toggleCarrito()">&times;</button>
+    </div>
+    <div id="lista-carrito-items" class="carrito-items">
+      <!-- Los productos agregados saldrán aquí -->
+    </div>
+    <div class="carrito-footer">
+      <div class="carrito-total">
+        <span>Total:</span>
+        <span id="carrito-total-precio">RD$ 0.00</span>
+      </div>
+      <button onclick="enviarPedidoWhatsApp()" class="btn-enviar-whatsapp">
+        <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE ESTÉTICO DE WHATSAPP -->
+  <a href="https://wa.me/18093961604?text=Hola%20Velvet%20&%20Care,%20deseo%20más%20información%20sobre%20sus%20productos." target="_blank" class="whatsapp-flotante" title="Escríbenos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Script de productos y app -->
+  <script src="productos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
